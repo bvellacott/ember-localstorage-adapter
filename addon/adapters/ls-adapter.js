@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import Where from 'npm:where-clause-evaluate';
 
 const DEFAULT_NAMESPACE = 'DS.LSAdapter';
 
@@ -116,23 +117,14 @@ const LSAdapter = DS.Adapter.extend(Ember.Evented, {
     }
   },
 
+  _evaluate: Where.newEvaluator({ cache : true }),
+
   _query: function (records, query) {
     var results = Ember.A([]), record;
 
-    function recordMatchesQuery(record) {
-      return Object.keys(query).every(function(property) {
-        var test = query[property];
-        if (Object.prototype.toString.call(test) === '[object RegExp]') {
-          return test.test(record[property]);
-        } else {
-          return record[property] === test;
-        }
-      });
-    }
-
     for (var id in records) {
       record = records[id];
-      if (recordMatchesQuery(record)) {
+      if (!query || this._evaluate(record, query)) {
         results.push(Ember.copy(record));
       }
     }

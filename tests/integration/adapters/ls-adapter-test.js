@@ -91,11 +91,11 @@ test('query', function(assert) {
   assert.expect(2);
   const done = assert.async(2);
 
-  run(store, 'query', 'list', {name: /one|two/}).then(records => {
+  run(store, 'query', 'list', 'where name in ["one", "two"]'/*{name: /one|two/}*/).then(records => {
     assert.equal(get(records, 'length'), 2, 'found results for /one|two/');
     done();
   });
-  run(store, 'query', 'list', {name: /.+/, id: /l1/}).then(records => {
+  run(store, 'query', 'list', 'where id = "l1" and name = "one"'/*{name: /.+/, id: /l1/}*/).then(records => {
     assert.equal(get(records, 'length'), 1, 'found results for {name: /.+/, id: /l1/}');
     done();
   });
@@ -104,7 +104,7 @@ test('query', function(assert) {
 test('query rejects promise when there are no records', function(assert) {
   const done = assert.async();
   assert.expect(2);
-  run(store, 'query', 'list', {name: /unknown/}).catch(() => {
+  run(store, 'query', 'list', 'where name = "unknown"'/*{name: /unknown/}*/).catch(() => {
     assert.ok(true);
     assert.equal(store.hasRecordForId('list', 'unknown'), false);
     done();
@@ -128,7 +128,7 @@ test('findAll', function(assert) {
 test('queryMany', function(assert) {
   assert.expect(11);
   const done = assert.async();
-  run(store, 'query', 'order', { done: true }).then(records => {
+  run(store, 'query', 'order', 'where done = true'/*{ done: true }*/).then(records => {
     const [firstRecord, secondRecord, thirdRecord] = records.toArray();
     assert.equal(get(records, 'length'), 3, '3 orders were found');
     assert.equal(get(firstRecord, 'name'), 'one', 'First\'s order name is one');
@@ -159,7 +159,7 @@ test('createRecord', function(assert) {
   const list = run(store, 'createRecord', 'list', {name: 'Rambo'});
 
   run(list, 'save').then(() => {
-    store.query('list', {name: 'Rambo'}).then(records => {
+    store.query('list', 'where name = "Rambo"'/*{name: 'Rambo'}*/).then(records => {
       let record = records.objectAt(0);
 
       assert.equal(get(records, 'length'), 1, 'Only Rambo was found');
@@ -184,12 +184,12 @@ test('updateRecords', function(assert) {
   const list = run(store, 'createRecord', 'list', {name: 'Rambo'});
 
   run(list, 'save').then(list => {
-    return store.query('list', {name: 'Rambo'}).then(records => {
+    return store.query('list', 'where name = "Rambo"'/*{name: 'Rambo'}*/).then(records => {
       let record = records.objectAt(0);
       record.set('name', 'Macgyver');
       return record.save();
     }).then(() => {
-      return store.query('list', {name: 'Macgyver'}).then(records => {
+      return store.query('list', 'where name = "Macgyver"'/*{name: 'Macgyver'}*/).then(records => {
         let record = records.objectAt(0);
         assert.equal(get(records, 'length'), 1, 'Only one record was found');
         assert.equal(get(record, 'name'), 'Macgyver', 'Updated name shows up');
@@ -205,14 +205,14 @@ test('deleteRecord', function(assert) {
   const done = assert.async();
 
   const assertListIsDeleted = () => {
-    return store.query('list', {name: 'one'}).catch(() => {
+    return store.query('list', 'where name = "one"'/*{name: 'one'}*/).catch(() => {
       assert.ok(true, 'List was deleted');
       done();
     });
   };
 
   run(() => {
-    store.query('list', {name: 'one'}).then(lists => {
+    store.query('list', 'where name = "one"'/*{name: 'one'}*/).then(lists => {
       const list = lists.objectAt(0);
       assert.equal(get(list, 'id'), 'l1', 'Item exists');
       list.deleteRecord();
@@ -253,7 +253,7 @@ test('changes in bulk', function(assert) {
     });
   }).then(() => {
 
-    let createdList = store.query('list', {name: 'Rambo'}).then(lists => {
+    let createdList = store.query('list', 'where name = "Rambo"'/*{name: 'Rambo'}*/).then(lists => {
       return assert.equal(get(lists, 'length'), 1, 'Record was created successfully');
     });
     let deletedList = store.findRecord('list', 'l2').then(list => {
@@ -352,7 +352,7 @@ test('date is loaded correctly', function(assert) {
   });
 
   return run(person, 'save').then(() => {
-    return store.query('person', {name: 'Dan'}).then(records => {
+    return store.query('person', 'where name = "Dan"'/*{name: 'Dan'}*/).then(records => {
       const loadedPerson = get(records, 'firstObject');
       const birthdate = get(loadedPerson, 'birthdate');
       assert.ok((birthdate instanceof Date), 'Date should be loaded as an instance of Date');
