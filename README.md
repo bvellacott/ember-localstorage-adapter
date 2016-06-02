@@ -1,4 +1,4 @@
-# Ember-localstorage-adapter
+# Ember-localstorage-adapter - with a where clause parser
 
 [![Build
 Status](https://travis-ci.org/locks/ember-localstorage-adapter.svg?branch=master)](https://travis-ci.org/locks/ember-localstorage-adapter)
