@@ -1,6 +1,6 @@
 {
   "name": "ember-localstorage-adapter",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0",
   "description": "Store your Ember application data in LocalStorage.",
   "directories": {
     "doc": "doc",
@@ -15,25 +15,20 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "Ryan Florence <rpflorence@gmail.com>",
+  "author": "Benjamin Vellacott <bmvellacott@gmail.com>",
   "contributors": [
     {
-      "name": "Alexandre de Oliveira",
-      "email": "chavedomundo@gmail.com"
-    },
-    {
-      "name": "Daniel Ochoa",
-      "email": "dannytenaglias@gmail.com"
+      "name": "Benjamin Vellacott",
+      "email": "bmvellacott@gmail.com"
     }
   ],
   "bugs": {
-    "url": "https://github.com/locks/ember-localstorage-adapter/issues"
+    "url": "https://github.com/bvellacott/ember-localstorage-adapter/issues"
   },
-  "homepage": "https://github.com/locks/ember-localstorage-adapter",
+  "homepage": "https://github.com/bvellacott/ember-localstorage-adapter",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
-    "ember-browserify": "^1.1.9",
     "ember-cli": "^1.13.15",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-content-security-policy": "^0.4.0",
@@ -57,11 +52,12 @@
     "ember-addon"
   ],
   "dependencies": {
-    "ember-cli-babel": "^5.1.5"
+    "ember-cli-babel": "^5.1.5",
+    "ember-browserify": "^1.1.9",
+    "where-clause-evaluate": "^1.0.2"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
-    "after": "ember-data",
-    "where-clause-evaluate": "^1.0.2"
+    "after": "ember-data"
   }
 }
