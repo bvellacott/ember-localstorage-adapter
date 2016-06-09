@@ -1,7 +1,7 @@
 {
-  "name": "ember-localstorage-adapter",
+  "name": "ember-localstorage-with-where-adapter",
   "version": "1.0.0",
-  "description": "Store your Ember application data in LocalStorage.",
+  "description": "Store your Ember application data in LocalStorage, and query it with where clauses",
   "directories": {
     "doc": "doc",
     "test": "tests"
