@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
- 	name: 'ember-localstorage-adapter'
+ 	name: 'ember-localstorage-with-where-adapter'
 };

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 import Owner from 'dummy/tests/helpers/owner';
-import LSSerializer from 'ember-localstorage-adapter/serializers/ls-serializer';
+import LSSerializer from 'ember-localstorage-with-where-adapter/serializers/ls-serializer';
 
 export default function setupStore(options) {
   let container, registry, owner;

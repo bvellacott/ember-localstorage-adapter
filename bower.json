@@ -1,16 +1,17 @@
 {
-  "name": "ember-localstorage-adapter",
-  "version": "0.5.5",
-  "homepage": "https://github.com/rpflorence/ember-localstorage-adapter",
+  "name": "ember-localstorage-with-where-adapter",
+  "version": "1.0.1",
+  "homepage": "https://github.com/rpflorence/ember-localstorage-with-where-adapter",
   "authors": [
-    "Ryan Florence <rpflorence@gmail.com>",
-    "Alexandre de Oliveira <chavedomundo@gmail.com>"
+    "Benjamin Vellacott <bmvellacott@gmail.com>"
   ],
-  "description": "Store your ember application data in localStorage.",
+  "description": "Store your ember application data in localStorage. And query it using a where clause",
   "keywords": [
     "localstorage",
     "ember",
-    "ember-data"
+    "ember-data",
+    "where",
+    "clause"
   ],
   "license": "MIT",
   "dependencies": {

@@ -2,7 +2,7 @@ import setupStore from 'dummy/tests/helpers/store';
 import Ember from 'ember';
 import FIXTURES from 'dummy/tests/helpers/fixtures';
 import DS from 'ember-data';
-import LSAdapter from 'ember-localstorage-adapter/adapters/ls-adapter';
+import LSAdapter from 'ember-localstorage-with-where-adapter/adapters/ls-adapter';
 
 import {module, test} from 'qunit';
 const {run, get, set} = Ember;
