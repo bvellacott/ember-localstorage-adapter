@@ -113,7 +113,7 @@ const LSAdapter = DS.Adapter.extend(Ember.Evented, {
     if (results.get('length')) {
       return this.loadRelationshipsForMany(store, type, results);
     } else {
-      return Ember.RSVP.reject();
+      return Ember.RSVP.resolve(results);
     }
   },
 
