@@ -1,6 +1,6 @@
 {
   "name": "ember-localstorage-with-where-adapter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository" : "https://github.com/bvellacott/ember-localstorage-with-where-adapter",
   "description": "Store your Ember application data in LocalStorage, and query it with where clauses",
   "directories": {

@@ -101,10 +101,10 @@ test('query', function(assert) {
   });
 });
 
-test('query rejects promise when there are no records', function(assert) {
+test('query doesn\'t reject promise when there are no records', function(assert) {
   const done = assert.async();
   assert.expect(2);
-  run(store, 'query', 'list', 'where name = "unknown"'/*{name: /unknown/}*/).catch(() => {
+  run(store, 'query', 'list', 'where name = "unknown"'/*{name: /unknown/}*/).then(() => {
     assert.ok(true);
     assert.equal(store.hasRecordForId('list', 'unknown'), false);
     done();
@@ -205,7 +205,7 @@ test('deleteRecord', function(assert) {
   const done = assert.async();
 
   const assertListIsDeleted = () => {
-    return store.query('list', 'where name = "one"'/*{name: 'one'}*/).catch(() => {
+    return store.query('list', 'where name = "one"'/*{name: 'one'}*/).then(() => {
       assert.ok(true, 'List was deleted');
       done();
     });
