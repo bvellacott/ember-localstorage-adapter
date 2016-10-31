@@ -1,3 +1,6 @@
+[![Build
+Status](https://travis-ci.org/locks/ember-localstorage-adapter.svg?branch=master)](https://travis-ci.org/locks/ember-localstorage-adapter)
+
 # Ember-localstorage-adapter - with a where clause evaluator
 
 This is a fork of the original Ember-localstorage-adapter. The only difference is that it evaluates a where clause when a query is run like so:
@@ -8,8 +11,6 @@ instead of evaluating against a regular expression:
 
 See where-clause-evaluate at https://github.com/bvellacott/where-clause-evaluate and https://www.npmjs.com/package/where-clause-evaluate for details of the where clause evaluation
 
-[![Build
-Status](https://travis-ci.org/locks/ember-localstorage-adapter.svg?branch=master)](https://travis-ci.org/locks/ember-localstorage-adapter)
 
 Store your ember application data in localStorage.
 
